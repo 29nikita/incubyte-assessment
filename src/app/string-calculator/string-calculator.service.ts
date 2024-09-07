@@ -28,4 +28,8 @@ export class StringCalculatorService {
 
     return this.numArray.reduce((sum, num) => sum + num, 0);
   }
+
+  getCountOfAddFunction(): number{
+    
+  }
 }
