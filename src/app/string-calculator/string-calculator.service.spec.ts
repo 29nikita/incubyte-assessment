@@ -16,7 +16,7 @@ describe('StringCalculatorService', () => {
 
   it('should return 0 for empty string', () => {
 
-    //this will return error as add function is not created
+    //this will give success now
     expect(service.add("")).toBe(0);
   });
   
