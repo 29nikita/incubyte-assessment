@@ -16,7 +16,7 @@ describe('StringCalculatorService', () => {
 
   it('should return 0 for empty string', () => {
 
-    //this will give error after handling first test case
+    //this will pass
     expect(service.add("")).toBe(0);
   });
 

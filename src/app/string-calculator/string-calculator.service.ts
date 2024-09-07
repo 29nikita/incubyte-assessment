@@ -7,7 +7,11 @@ export class StringCalculatorService {
 
   add(numbers: string): number{
 
-    //this will handle second test case but will fail first test case
+    //this will handle first test case
+    if(!numbers){
+      return 0;
+    }
+
     if(!numbers.includes(",")){
       return parseInt(numbers, 10);
     }
