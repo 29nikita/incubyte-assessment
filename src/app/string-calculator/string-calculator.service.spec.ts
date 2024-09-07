@@ -47,7 +47,10 @@ describe('StringCalculatorService', () => {
   });
 
   it('should return the number of times add function get called', () => {
-    expect(service.getCountOfAddFunction()).toBe(9);
+    service.add("1,2");
+    service.add("//.\n1.2.3");
+
+    expect(service.getCountOfAddFunction()).toBe(2);
   });
 
 });

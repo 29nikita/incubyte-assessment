@@ -6,8 +6,11 @@ import { Injectable } from '@angular/core';
 export class StringCalculatorService {
 
   numArray: number[] = [];
+  count: number = 0;
 
   add(numbers: string): number{
+    this.count++;
+
     if(!numbers){
       return 0;
     }
@@ -30,6 +33,6 @@ export class StringCalculatorService {
   }
 
   getCountOfAddFunction(): number{
-    
+    return this.count;
   }
 }
