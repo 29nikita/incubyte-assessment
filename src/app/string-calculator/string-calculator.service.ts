@@ -23,7 +23,7 @@ export class StringCalculatorService {
 
     const negatives = this.numArray.filter(num => num < 0);
     if(negatives.length > 0){
-      throw new Error(`negative numbers not allowed ${negatives[0]}`);
+      throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
     }
 
     return this.numArray.reduce((sum, num) => sum + num, 0);
