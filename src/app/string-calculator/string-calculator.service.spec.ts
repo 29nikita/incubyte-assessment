@@ -54,7 +54,7 @@ describe('StringCalculatorService', () => {
   });
 
   it('should ignore the numbers greater than 1000', () => {
-    expect(service.add("1,1000")).toBe(1);
+    expect(service.add("1,1001")).toBe(1);
   });
 
 });

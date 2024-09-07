@@ -24,6 +24,7 @@ export class StringCalculatorService {
     }
     this.numArray = numbers.split(delimiter).map((num) => parseInt(num, 10));
 
+    this.numArray = this.numArray.filter(num => num <= 1000);
     const negatives = this.numArray.filter(num => num < 0);
 
     if(negatives.length > 0){
