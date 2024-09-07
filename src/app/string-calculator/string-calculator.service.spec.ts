@@ -27,8 +27,6 @@ describe('StringCalculatorService', () => {
   });
 
   it('should return sum of all numbers that are provided', () => {
-
-    //this will fail as we haven't handle it
     expect(service.add("3,4,6")).toBe(13);
   })
 

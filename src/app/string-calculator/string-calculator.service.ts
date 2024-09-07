@@ -18,6 +18,6 @@ export class StringCalculatorService {
       return parseInt(numbers, 10);
     }
 
-    return this.numArray[0] + this.numArray[1];
+    return this.numArray.reduce((sum, num) => sum + num, 0);
   }
 }
