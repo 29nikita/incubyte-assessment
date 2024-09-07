@@ -5,9 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class StringCalculatorService {
 
-  add(numbers: string): number{
+  numArray: number[] = [];
 
-    //this will handle first test case
+  add(numbers: string): number{
+    this.numArray = numbers.split(",").map((num) => parseInt(num, 10));
+
     if(!numbers){
       return 0;
     }
@@ -16,6 +18,7 @@ export class StringCalculatorService {
       return parseInt(numbers, 10);
     }
 
-    return 0;
+    //this will pass thirs test case of 2 numbers
+    return this.numArray[0] + this.numArray[1];
   }
 }

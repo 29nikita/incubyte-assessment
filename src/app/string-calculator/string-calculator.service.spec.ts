@@ -23,8 +23,6 @@ describe('StringCalculatorService', () => {
   });
 
   it('should return the summation of numbers if two numbers are provided', () => {
-
-    //this will fail as have yet to handle the result with two numbers
     expect(service.add("3,4")).toBe(7);
   });
 
