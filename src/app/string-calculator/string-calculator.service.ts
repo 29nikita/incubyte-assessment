@@ -12,7 +12,9 @@ export class StringCalculatorService {
       return 0;
     }
 
-    this.numArray = numbers.split(",").map((num) => parseInt(num, 10));
+    //this will pass test case for new line as delimiter
+    const delimiter = /\n|,/;
+    this.numArray = numbers.split(delimiter).map((num) => parseInt(num, 10));
 
     return this.numArray.reduce((sum, num) => sum + num, 0);
   }
