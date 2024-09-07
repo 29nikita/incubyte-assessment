@@ -30,6 +30,8 @@ describe('StringCalculatorService', () => {
     expect(service.add("3,4,6")).toBe(13);
   })
 
-  
+  it('should handle new line as delimiter between numbers', () => {
+    expect(service.add("1\n2,3")).toBe(6);
+  });
 
 });
