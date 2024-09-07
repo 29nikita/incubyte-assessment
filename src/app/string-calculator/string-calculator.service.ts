@@ -18,7 +18,6 @@ export class StringCalculatorService {
       return parseInt(numbers, 10);
     }
 
-    //this will pass thirs test case of 2 numbers
     return this.numArray[0] + this.numArray[1];
   }
 }
