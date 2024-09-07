@@ -38,4 +38,8 @@ describe('StringCalculatorService', () => {
     expect(service.add("//;\n1;2")).toBe(3);
   });
 
+  it('should throw exception if the input contains a negative number', () => {
+    expect(service.add("-1,2")).toThrowError("negative numbers not allowed -1");
+  });
+
 });
