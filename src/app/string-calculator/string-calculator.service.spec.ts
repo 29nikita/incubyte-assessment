@@ -43,7 +43,11 @@ describe('StringCalculatorService', () => {
   });
   
   it('should throw exception if the input contains multiple negative numbers', () => {
-    expect(() => service.add("-1,2,-3,-4")).toThrowError("negative numbers not allowed -1,-3,-4")
-  })
+    expect(() => service.add("-1,2,-3,-4")).toThrowError("negative numbers not allowed -1,-3,-4");
+  });
+
+  it('should return the number of times add function get called', () => {
+    expect(service.getCountOfAddFunction()).toBe(9);
+  });
 
 });
