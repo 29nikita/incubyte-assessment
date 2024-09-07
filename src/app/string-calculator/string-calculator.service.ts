@@ -14,10 +14,7 @@ export class StringCalculatorService {
       return 0;
     }
 
-    if(!numbers.includes(",")){
-      return parseInt(numbers, 10);
-    }
-
+    //cleaning up code as this will handle the single digit test case
     return this.numArray.reduce((sum, num) => sum + num, 0);
   }
 }
