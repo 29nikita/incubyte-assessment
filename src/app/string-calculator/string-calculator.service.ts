@@ -25,6 +25,7 @@ export class StringCalculatorService {
     this.numArray = numbers.split(delimiter).map((num) => parseInt(num, 10));
 
     const negatives = this.numArray.filter(num => num < 0);
+
     if(negatives.length > 0){
       throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
     }
