@@ -29,7 +29,6 @@ export class StringCalculatorService {
         delimiter = new RegExp(this.delimiterString);
       }
 
-      
       numbers = numbers.substring(this.delimiterEndIndex+1);
     }
 

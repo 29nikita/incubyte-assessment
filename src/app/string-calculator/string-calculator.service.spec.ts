@@ -61,4 +61,8 @@ describe('StringCalculatorService', () => {
     expect(service.add("//[***]\n1***2***3")).toBe(6);
   });
 
+  it('should allow multiple delimiters of one charater', () => {
+    expect(service.add("//[*][%]\n1*2%5")).toBe(8);
+  })
+
 });
