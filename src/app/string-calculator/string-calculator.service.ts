@@ -25,11 +25,9 @@ export class StringCalculatorService {
       const multipleDelimiterMatch = delimiterSection.match(/\[.*?\]/g);
 
       if (multipleDelimiterMatch) {
-        const delimiterPatterns = multipleDelimiterMatch.map((del) => del.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-        delimiter = new RegExp(delimiterPatterns.join("|"), "g");
+        delimiter = this.extractDelimiters(multipleDelimiterMatch);
       }else {
-        delimiter = new RegExp(delimiterSection.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g");
-      
+        delimiter = new RegExp(delimiterSection.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g");  
       } 
 
       numbers = numbers.substring(this.delimiterEndIndex + 1);
@@ -48,7 +46,7 @@ export class StringCalculatorService {
   checkForNegatives(numArray: number[]){
     const negatives = numArray.filter(num => num < 0);
 
-    if (negatives.length > 0) {
+    if (negatives.length > 0){
       throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
     }
   }
@@ -57,7 +55,10 @@ export class StringCalculatorService {
     return numArray.reduce((sum, num) => sum + num, 0);
   }
 
-
+  extractDelimiters(multipleDelimiters: string[]): RegExp{
+    const delimiterPatterns = multipleDelimiters.map((del) => del.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    return new RegExp(delimiterPatterns.join("|"), "g");
+  }
 
   getCountOfAddFunction(): number {
     return this.count;
