@@ -40,7 +40,7 @@ export class StringCalculatorService {
 
     this.checkForNegatives(this.numArray);
 
-    return this.numArray.reduce((sum, num) => sum + num, 0);
+    return this.calulateSumOfNumbers(this.numArray);
   }
 
   checkForNegatives(numArray: number[]){
@@ -49,6 +49,10 @@ export class StringCalculatorService {
     if (negatives.length > 0) {
       throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
     }
+  }
+
+  calulateSumOfNumbers(numArray: number[]): number{
+    return numArray.reduce((sum, num) => sum + num, 0);
   }
 
   getCountOfAddFunction(): number {
