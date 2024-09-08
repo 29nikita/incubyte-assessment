@@ -36,7 +36,8 @@ export class StringCalculatorService {
     }
 
     this.numArray = numbers.split(delimiter).map((num) => parseInt(num, 10));
-    this.numArray = this.numArray.filter(num => num <= 1000);
+   
+    this.numArray = this.filterNumbersGreaterThanThousand(this.numArray);
 
     this.checkForNegatives(this.numArray);
 
@@ -51,9 +52,15 @@ export class StringCalculatorService {
     }
   }
 
+  filterNumbersGreaterThanThousand(numArray: number[]){
+    return numArray.filter(num => num <= 1000);
+  }
+
   calulateSumOfNumbers(numArray: number[]): number{
     return numArray.reduce((sum, num) => sum + num, 0);
   }
+
+
 
   getCountOfAddFunction(): number {
     return this.count;
