@@ -7,6 +7,8 @@ export class StringCalculatorService {
 
   numArray: number[] = [];
   count: number = 0;
+  delimiterEndIndex: any;
+  delimiterString: string = "";
 
   add(numbers: string): number{
     this.count++;
@@ -18,10 +20,17 @@ export class StringCalculatorService {
     let delimiter = /\n|,/;
 
     if(numbers.startsWith("//")){
-      delimiter = new RegExp(numbers[2]);
-      const delimiterEndIndex = numbers.indexOf("\n");
-      numbers = numbers.substring(delimiterEndIndex+1);
+      this.delimiterEndIndex = numbers.indexOf("\n");
+      if(numbers[2] === "["){
+        this.delimiterString = numbers.substring(3, this.delimiterEndIndex-1);
+      }else{
+        this.delimiterString = numbers.substring(2, 2);
+      }
+
+      delimiter = new RegExp(this.delimiterString);
+      numbers = numbers.substring(this.delimiterEndIndex+1);
     }
+
     this.numArray = numbers.split(delimiter).map((num) => parseInt(num, 10));
     this.numArray = this.numArray.filter(num => num <= 1000);
     
