@@ -21,20 +21,16 @@ export class StringCalculatorService {
 
     if (numbers.startsWith("//")) {
       this.delimiterEndIndex = numbers.indexOf("\n");
-
       const delimiterSection = numbers.substring(2, this.delimiterEndIndex);
-      const delimiterMatch = delimiterSection.match(/\[.*?\]/g);
+      const multipleDelimiterMatch = delimiterSection.match(/\[.*?\]/g);
 
-      if (delimiterMatch) {
-        const delimiterPatterns = delimiterMatch.map((del) => del.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+      if (multipleDelimiterMatch) {
+        const delimiterPatterns = multipleDelimiterMatch.map((del) => del.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
         delimiter = new RegExp(delimiterPatterns.join("|"), "g");
-      }else if (numbers[2] === "[") {
-        this.delimiterString = numbers.substring(3, this.delimiterEndIndex - 1);
-        delimiter = new RegExp(this.delimiterString.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-      } else {
-        this.delimiterString = numbers[2];
-        delimiter = new RegExp(this.delimiterString);
-      }
+      }else {
+        delimiter = new RegExp(delimiterSection.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g");
+      
+      } 
 
       numbers = numbers.substring(this.delimiterEndIndex + 1);
     }
