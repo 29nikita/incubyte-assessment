@@ -57,4 +57,8 @@ describe('StringCalculatorService', () => {
     expect(service.add("1,1001")).toBe(1);
   });
 
+  it('should support delimiter of any length', () => {
+    expect(service.add("“//[***]\n1***2***3")).toBe(1);
+  });
+
 });
