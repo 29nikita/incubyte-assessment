@@ -23,11 +23,13 @@ export class StringCalculatorService {
       this.delimiterEndIndex = numbers.indexOf("\n");
       if(numbers[2] === "["){
         this.delimiterString = numbers.substring(3, this.delimiterEndIndex-1);
+        delimiter = new RegExp(this.delimiterString.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
       }else{
-        this.delimiterString = numbers.substring(2, 2);
+        this.delimiterString = numbers[2];
+        delimiter = new RegExp(this.delimiterString);
       }
 
-      delimiter = new RegExp(this.delimiterString);
+      
       numbers = numbers.substring(this.delimiterEndIndex+1);
     }
 
