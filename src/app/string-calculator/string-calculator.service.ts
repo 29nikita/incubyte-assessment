@@ -35,9 +35,10 @@ export class StringCalculatorService {
       numbers = numbers.substring(this.delimiterEndIndex + 1);
     }
 
-    this.numArray = numbers.split(delimiter).map((num) => parseInt(num, 10));
-   
-    this.numArray = this.filterNumbersGreaterThanThousand(this.numArray);
+    this.numArray = numbers.split(delimiter)
+                           .map((num) => parseInt(num, 10))
+                           .filter((num) => num <= 1000);
+  
 
     this.checkForNegatives(this.numArray);
 
@@ -50,10 +51,6 @@ export class StringCalculatorService {
     if (negatives.length > 0) {
       throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
     }
-  }
-
-  filterNumbersGreaterThanThousand(numArray: number[]){
-    return numArray.filter(num => num <= 1000);
   }
 
   calulateSumOfNumbers(numArray: number[]): number{
